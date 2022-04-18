@@ -1,0 +1,73 @@
+{% load bootstrap4 %}
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+ 
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap" rel="stylesheet"> -->
+ <!-- reference your installed Font Awesome Free package's files here -->
+ <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+ 
+  <!-- reference your installed Font Awesome Free package's files here -->
+  <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+
+  
+
+  {% if title %}
+  <title>neighbourhood - {{title}}</title>
+  {% else %}
+    <title> neighbourhood </title>
+  {% endif %}
+
+  {% block styles %}
+  <style>
+      /* .container-fluid{
+        
+      } */
+    .container-fluid{
+    font-family: 'Lato', global_font_string;font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+   
+    }
+    .container-fluid a{
+     color: white;
+     padding-right: 10px;
+    }
+
+  </style>
+  {% bootstrap_css %}
+  <body style="background-color:#1B1B3A; color: rgb(228,222,213);">
+    
+
+
+
+
+
+  </body>
+ 
+  <!-- <link rel="stylesheet" href="{% static 'css/basegallery.css'%}" type="text/css" /> -->
+  
+  {% endblock %}
+
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    {% block content %} <div style="background-color: aliceblue;" class="container-fluid"></div> 
+    
+    
+    {%endblock%}
+
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ {% bootstrap_javascript %}
+{% endblock %}
+</body>
+</html>
