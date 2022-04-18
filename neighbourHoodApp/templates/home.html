@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% loads bootstrap4}
+{% block content%}
+{{ block.super}}
+
+<div class="container-fluid">
+
+    <div class="row mt-5 mb-5 ">
+        {%if hoods%}
+        {%for hood in hoods%}
+        <div class="col-sm-7 mt-5 "> <h3> <a style="text-decoration: none; color: rgb(228,222,213);" href="{% url 'more' hood.id%}">{{hood.name}}</a> </h3>
+
+        <h5> population: {{hood.count}}</h5>
+        <p> location: {{hood.location}}</p>
+        <p>{{hood.description}}</p>
+        <p> registered by: {{hood.admin}}</p>
+        
+        </div>
+        <div class="col-sm-5 col-md-5 mt-5"> <a href="{% url 'more' hood.id%}"> <img style="width: 100%; box-shadow: 3px 3px 5px black;" src="{{hood.image.url}}" alt="neighbourhood image"></a></div>
+     
+        {%endfor%}
+      {%else%}
+      <div class="col-sm-4 col-md-5">there are no registered hoods </div>
+       
+      {%endif%}</div>
+</div>
+{%endblock%}
