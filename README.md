@@ -3,7 +3,7 @@
 [**sylvestus sigei**](https://github.com/sylvestus)
 ## Description
  this is a web application that allows you to be in the loop about everything happening in your neighborhood. From contact information of different handyman to meeting announcements or even alerts.
-![Website image](https://github.com/sylvestus/awwwards/blob/master/media/media/Screenshot%20from%202022-04-11%2016-11-40.png)
+![Website image](https://github.com/sylvestus/neighbourhood/blob/master/neighbourHoodApp/media/hood.png)
 ## Live Link
 [View Site](https://neighbou3hood.herokuapp.com/)
 ## Admin Dashboard
