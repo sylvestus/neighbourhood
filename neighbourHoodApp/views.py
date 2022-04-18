@@ -5,15 +5,18 @@ from .models import Post, User,Profile,Bussiness,NeighbourHood
 from django.http.response import  HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from .forms import PostForm,UprofileForm,UuserForm,NewHoodForm,BusinessesForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     message='profile'
     # projects = Profile.objects.filter(user=current_user.id).all"projects": projects
     return render(request, 'profile.html', {'message':message })
 
+@login_required(login_url='/accounts/login/')
 def uprofile(request, id):
     current_user = request.user
     user_object = get_object_or_404(User, id=id)
@@ -27,6 +30,8 @@ def uprofile(request, id):
 
     return render(
         request, "uprofile.html",{"profile_update": profile_update, "user_update": user_update})
+
+@login_required(login_url='/accounts/login/')
 def search_hood(request):
     if 'neighborhood' in request.GET and request.GET["neighborhood"]:
         search_term = request.GET.get("neighborhood")
@@ -40,6 +45,7 @@ def search_hood(request):
     return render(request, 'searched.html',{"message":message})
 
 
+@login_required(login_url='/accounts/login/')
 def search_bizz(request):
 
     if 'bizz' in request.GET and request.GET["bizz"]:
@@ -60,6 +66,7 @@ def home(request):
 
     return render(request,'home.html',{'message':message,'hoods':hoods})
 
+@login_required(login_url='/accounts/login/')
 def more(request,id):
     message='more page'
     more_onHood=NeighbourHood.objects.filter(id=id).get()
@@ -70,6 +77,7 @@ def more(request,id):
  
     return render(request,'more.html',{'message':message,'hood':more_onHood ,'businesses':busenesses,'current_hood':current_hood,'posts':posts})
 
+@login_required(login_url='/accounts/login/')
 def deleteHood(request,id):
    
     deleteHood=NeighbourHood.objects.filter(id=id)
@@ -77,6 +85,7 @@ def deleteHood(request,id):
 
     return redirect('home')
 
+@login_required(login_url='/accounts/login/')
 def new_hood(request):
     message='new neighbourhood'
     if request.method=="POST":
@@ -97,6 +106,8 @@ def new_hood(request):
         form = NewHoodForm()
     return render(request,'newhood.html',{'message':message, 'newHoodForm':form})
 
+
+@login_required(login_url='/accounts/login/')
 def new_bizz(request):
     if request.method=="POST":
         current_user=request.user
@@ -121,6 +132,7 @@ def deletebizz(request,id):
 
     return redirect('home')
 
+@login_required(login_url='/accounts/login/')
 def new_post(request):
     if request.method=="POST":
         current_user=request.user
@@ -139,6 +151,7 @@ def new_post(request):
         form = PostForm
     return render(request,'newpost.html',{'newpost':form })
 
+@login_required(login_url='/accounts/login/')
 def deletepost(request,id):
     post=Post.objects.filter(id=id)
     post.delete()
