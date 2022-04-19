@@ -36,7 +36,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-k&@afz_ajr#r)%hj@p2hzyb#a9is#3y32x1v4hn&^o()xd#b8g'
+
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -110,6 +110,8 @@ WSGI_APPLICATION = 'neighbourHood.wsgi.application'
 #         'PASSWORD': 'access',
 #     }
 # }
+
+
 # development
 if config('MODE')=="dev":
    DATABASES = {
